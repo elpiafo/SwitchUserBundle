@@ -1,0 +1,3 @@
+elpiafo_switch_user_homepage:
+    path:     /
+    defaults: { _controller: ElpiafoSwitchUserBundle:Default:index }
