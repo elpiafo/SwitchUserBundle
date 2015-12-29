@@ -42,6 +42,7 @@ class SwitchRepository extends \Doctrine\ORM\EntityRepository
             ->addSelect('s')
             ->andWhere('s.grantor = :grantor')
             ->setParameter('grantor', $grantor);
+        return $qb->getQuery()->getFirstResult();
     }
 
     public function getGrantorFromUser($granted)
@@ -50,6 +51,7 @@ class SwitchRepository extends \Doctrine\ORM\EntityRepository
             ->addSelect('s')
             ->andWhere('s.granted = :granted')
             ->setParameter('granted', $granted);
+        return $qb->getQuery()->getFirstResult();
     }
 
     public function getAllAllowed()
