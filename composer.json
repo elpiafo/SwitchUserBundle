@@ -6,9 +6,12 @@
             "email": "adriensv@gmail.com"
         }
     ],
+	"autoload": {
+        "psr-4": { "Elpiafo\\SwitchUserBundle\\": "" }
+    },
     "description" : "The SwitchUserBundle provides a solution to switch beetween user account.",
     "license": "MIT",
-    "minimum-stability": "dev-master",
+    "minimum-stability": "dev",
     "require": {
       "php": ">=5.3.9",
       "symfony/framework-bundle": "~2.7|~3.0"
