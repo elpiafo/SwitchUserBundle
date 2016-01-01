@@ -24,14 +24,14 @@ class SwitchRepository extends \Doctrine\ORM\EntityRepository
             'granted'       => $granted
         );
         $qb = $this->createQueryBuilder('s')
-            ->addSelect('s')
-            ->where('s.active = 1')
-            ->andWhere('s.startDate <= :startDate OR s.startDate IS NULL')
-            ->andWhere('s.endDate >= :endDate OR s.endDate IS NULL')
-            ->andWhere('s.grantor = :grantor')
-            ->andWhere('s.granted = :granted')
-            ->setMaxResults(1)
-            ->setParameters($params)
+            //->addSelect('s')
+            //->where('s.active = 1')
+            //->andWhere('s.startDate <= :startDate OR s.startDate IS NULL')
+            //->andWhere('s.endDate >= :endDate OR s.endDate IS NULL')
+            //->andWhere('s.grantor = :grantor')
+            //->andWhere('s.granted = :granted')
+            //->setMaxResults(1)
+            //->setParameters($params)
         ;
         return $qb->getQuery()->getFirstResult();
     }
@@ -67,6 +67,23 @@ class SwitchRepository extends \Doctrine\ORM\EntityRepository
             ->andWhere('s.startDate <= :startDate OR s.startDate IS NULL')
             ->andWhere('s.endDate >= :endDate OR s.endDate IS NULL')
             ->setParameters($params)
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
+    public function checkTimeslot($grantor, $granted, $startDate, $endDate)
+    {
+        $params = array(
+            'grantor'   => $grantor,
+            'granted'   => $granted,
+            'startDate' => $startDate,
+            'endDate'   => $endDate
+        );
+        $qb = $this->createQueryBuilder('s')
+            ->addSelect('s')
+            ->where('s.grantor = :grantor')
+            ->andWhere('s.granted = :granted')
+            ->andWhere('(s.startDate > :startDate AND s.startDate >= :endDate) OR (s.endDate <= :startDate AND s.endDate < :endDate)')
         ;
         return $qb->getQuery()->getResult();
     }

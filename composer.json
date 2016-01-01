@@ -1,0 +1,16 @@
+{
+    "name": "elpiafo/switch-user-bundle",
+    "authors": [
+        {
+            "name": "Adrien Saint-Vanne",
+            "email": "adriensv@gmail.com"
+        }
+    ],
+    "description" : "The SwitchUserBundle provides a solution to switch beetween user account.",
+    "license": "MIT",
+    "minimum-stability": "dev-master",
+    "require": {
+      "php": ">=5.3.9",
+      "symfony/framework-bundle": "~2.7|~3.0"
+    }
+}
