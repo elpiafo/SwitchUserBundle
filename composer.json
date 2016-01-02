@@ -1,15 +1,16 @@
 {
     "name": "elpiafo/switch-user-bundle",
+	"type": "symfony-bundle",
+    "homepage": "https://github.com/elpiafo/SwitchUserBundle",
     "authors": [
         {
             "name": "Adrien Saint-Vanne",
             "email": "adriensv@gmail.com"
         }
     ],
-	"autoload": {
-        "psr-4": { "Elpiafo\\SwitchUserBundle\\": "" }
+    "autoload": {
+	    "psr-4": { "Elpiafo\\SwitchUserBundle\\": "" }
     },
-	"target-dir" : "Elpiafo/SwitchUserBundle",
     "description" : "The SwitchUserBundle provides a solution to switch between user account.",
     "license": "MIT",
     "minimum-stability": "dev",
