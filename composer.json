@@ -9,7 +9,8 @@
 	"autoload": {
         "psr-4": { "Elpiafo\\SwitchUserBundle\\": "" }
     },
-    "description" : "The SwitchUserBundle provides a solution to switch beetween user account.",
+	"target-dir" : "Elpiafo/SwitchUserBundle",
+    "description" : "The SwitchUserBundle provides a solution to switch between user account.",
     "license": "MIT",
     "minimum-stability": "dev",
     "require": {
