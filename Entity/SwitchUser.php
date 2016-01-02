@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Switch
  *
  * @ORM\Table(name="switchuser")
- * @ORM\Entity(repositoryClass="Elpiafo\SwitchUserBundle\Repository\SwitchRepository")
+ * @ORM\Entity(repositoryClass="Elpiafo\SwitchUserBundle\Repository\SwitchUserRepository")
  */
 class SwitchUser
 {
@@ -20,13 +20,13 @@ class SwitchUser
 
     /**
      * Grantor user allows granted user
-     * @ORM\OneToOne(targetEntity="Symfony\Component\Security\Core\User\UserInterface", cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity="Symfony\Component\Security\Core\User\UserInterface", cascade={"remove"})
      */
     protected $grantor;
 
     /**
      * Granted user is allowed by grantor user
-     * @ORM\OneToOne(targetEntity="Symfony\Component\Security\Core\User\UserInterface", cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity="Symfony\Component\Security\Core\User\UserInterface", cascade={"remove"})
      */
     protected $granted;
 
