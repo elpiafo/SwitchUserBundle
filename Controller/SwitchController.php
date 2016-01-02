@@ -13,7 +13,7 @@ class SwitchController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $currentUser = $this->getUser();
-        $grantorUser = $em->getRepository('Symfony\Component\Security\Core\User\UserInterface');
+        $grantorUser = $em->getRepository('Symfony\Component\Security\Core\User\UserInterface')->findById($userId);
         if (!$grantorUser) {
             $this->createNotFoundException('Requested user not found');
         }
