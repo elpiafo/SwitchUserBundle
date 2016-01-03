@@ -21,12 +21,14 @@ class SwitchUser
     /**
      * Grantor user allows granted user
      * @ORM\ManyToOne(targetEntity="Symfony\Component\Security\Core\User\UserInterface", cascade={"remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
     protected $grantor;
 
     /**
      * Granted user is allowed by grantor user
      * @ORM\ManyToOne(targetEntity="Symfony\Component\Security\Core\User\UserInterface", cascade={"remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
     protected $granted;
 
