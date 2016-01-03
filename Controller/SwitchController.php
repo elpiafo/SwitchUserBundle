@@ -13,20 +13,20 @@ class SwitchController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $currentUser = $this->getUser();
-        $grantorUser = $em->getRepository('Symfony\Component\Security\Core\User\UserInterface')->findById($userId);
+        $grantorUser = $em->getRepository('Symfony\Component\Security\Core\User\UserInterface')->findOneById($userId);
         if (!$grantorUser) {
-            $this->createNotFoundException('Requested user not found');
+            throw $this->createNotFoundException('Requested user not found');
         }
         if (!$em->getRepository('ElpiafoSwitchUserBundle:SwitchUser')->isAllowed($userId, $currentUser->getId())) {
-            $this->createAccessDeniedException('Requested user has not granted current account');
+            throw $this->createAccessDeniedException('Requested user has not granted current account');
         }
         $this->switchUser($grantorUser, null, $this->get('security.token_storage')->getToken()->getProviderKey(), $grantorUser->getRoles());
-        $this->switchSuccessRedirect();
+        return $this->switchSuccessRedirect();
     }
 
     protected function switchSuccessRedirect()
     {
-        $this->redirect('/');
+        return $this->redirect('/');
     }
 
     protected function switchUser($user, $credentials, $providerKey, array $roles)
