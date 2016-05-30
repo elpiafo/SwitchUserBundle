@@ -72,7 +72,8 @@ class SwitchUserRepository extends \Doctrine\ORM\EntityRepository
         );
         $qb = $this->createQueryBuilder('s');
         $qb->addSelect('s')
-            ->where('s.grantor = :grantor')
+            ->where('s.active = 1')
+            ->andWhere('s.grantor = :grantor')
             ->andWhere('s.granted = :granted')
             ->andWhere(
                 $qb->expr()->orX(
