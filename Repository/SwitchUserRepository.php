@@ -30,18 +30,18 @@ class SwitchUserRepository extends \Doctrine\ORM\EntityRepository
     public function getGrantedFromUser($grantor)
     {
         $qb = $this->createQueryBuilder('s')
-            ->addSelect('s')
-            ->andWhere('s.grantor = :grantor')
-            ->setParameter('grantor', $grantor);
+        $qb->addSelect('s')
+           ->andWhere('s.grantor = :grantor')
+           ->setParameter('grantor', $grantor);
         return $qb->getQuery()->getResult();
     }
 
     public function getGrantorFromUser($granted)
     {
         $qb = $this->createQueryBuilder('s');
-            ->addSelect('s')
-            ->andWhere('s.granted = :granted')
-            ->setParameter('granted', $granted);
+        $qb->addSelect('s')
+           ->andWhere('s.granted = :granted')
+           ->setParameter('granted', $granted);
         return $qb->getQuery()->getResult();
     }
 
